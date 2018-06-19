@@ -1,6 +1,7 @@
 package com.adoph.framework.permission.dao.sys;
 
 import com.adoph.framework.permission.pojo.SysMenu;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @version v1.0
  * @date 2018/1/30
  */
+@Repository
 public interface SysMenuMapper {
 
     /**

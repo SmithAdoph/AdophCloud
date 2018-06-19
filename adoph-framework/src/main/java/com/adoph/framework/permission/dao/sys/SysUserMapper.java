@@ -3,6 +3,8 @@ package com.adoph.framework.permission.dao.sys;
 import com.adoph.framework.permission.pojo.SysRole;
 import com.adoph.framework.permission.pojo.SysUser;
 import com.adoph.framework.permission.vo.UserRequest;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import java.util.Map;
  * @version v1.0
  * @date 2018/1/3
  */
+@Repository
 public interface SysUserMapper {
     /**
      * 分页查询用户列表

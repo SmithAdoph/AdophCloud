@@ -1,6 +1,5 @@
 package com.adoph.framework.util;
 
-import com.adoph.test.design.pattern.observer.v3.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +26,7 @@ public class PropertiesUtils {
     public static Properties loadProperties(String fileName) {
         Properties props = new Properties();
         try {
-            props.load(Test.class.getClassLoader().getResourceAsStream("test/observer.properties"));
+            props.load(PropertiesUtils.class.getClassLoader().getResourceAsStream("test/observer.properties"));
         } catch (IOException e) {
             logger.error("加载[" + fileName + "]文件异常！", e);
         }

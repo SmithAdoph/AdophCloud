@@ -2,6 +2,7 @@ package com.adoph.framework.permission.dao.sys;
 
 import com.adoph.framework.permission.pojo.SysRole;
 import com.adoph.framework.permission.vo.RoleRequest;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @version v1.0
  * @date 2018/1/15
  */
+@Repository
 public interface SysRoleMapper {
 
     /**
