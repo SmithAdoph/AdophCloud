@@ -1,6 +1,6 @@
 package com.adoph.test.spring;
 
-import com.adoph.framework.permission.pojo.SysUser;
+import com.adoph.permission.pojo.SysUser;
 import com.adoph.test.pojo.User;
 import com.adoph.framework.util.SysUtils;
 import org.hibernate.Query;

@@ -1,0 +1,105 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adoph.permission.dao.sys.SysUserMapper">
+    <select id="queryUserList" parameterType="com.adoph.permission.vo.UserRequest"
+            resultType="com.adoph.permission.pojo.SysUser">
+        SELECT id, user_name, create_time, update_time, last_login_host, last_login_time FROM sys_user
+        WHERE
+        <include refid="WHERE_CLAUSE"/>
+        ORDER BY id ASC
+        LIMIT #{start}, #{limit}
+    </select>
+
+    <select id="countUsers" parameterType="com.adoph.permission.vo.UserRequest" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM sys_user
+        WHERE
+        <include refid="WHERE_CLAUSE"/>
+    </select>
+
+    <sql id="WHERE_CLAUSE">
+        1 = 1
+        <if test="userName != null and userName != ''">
+            AND user_name LIKE concat(#{userName}, '%')
+        </if>
+        <if test="startCreateTime != null and startCreateTime != ''">
+            AND UNIX_TIMESTAMP(create_time)*1000 >= #{startCreateTime}
+        </if>
+        <if test="endCreateTime != null and endCreateTime != ''">
+            AND UNIX_TIMESTAMP(create_time)*1000 <![CDATA[<=]]> #{endCreateTime}
+        </if>
+        <if test="startLastLoginTime != null and startLastLoginTime != ''">
+            AND UNIX_TIMESTAMP(last_login_time)*1000 >= #{startLastLoginTime}
+        </if>
+        <if test="endLastLoginTime != null and endLastLoginTime != ''">
+            AND UNIX_TIMESTAMP(last_login_time)*1000 <![CDATA[<=]]> #{endLastLoginTime}
+        </if>
+    </sql>
+
+    <select id="queryUserByName" parameterType="java.lang.String"
+            resultType="com.adoph.permission.pojo.SysUser">
+        SELECT *
+        FROM SYS_USER
+        WHERE user_name = #{userName}
+    </select>
+
+    <update id="updateLoginInfo" parameterType="com.adoph.permission.pojo.SysUser">
+        UPDATE SYS_USER
+        SET
+            last_login_host = #{lastLoginHost},
+            last_login_time = #{lastLoginTime}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertUser" keyProperty="id" useGeneratedKeys="true"
+            parameterType="com.adoph.permission.pojo.SysUser">
+        INSERT INTO SYS_USER (user_name, password, created_by) VALUES (#{userName}, #{password}, #{createdBy})
+    </insert>
+
+    <update id="updateUser" parameterType="com.adoph.permission.pojo.SysUser">
+        UPDATE SYS_USER
+        SET
+            user_name   = #{userName},
+            password    = #{password},
+            updated_by  = #{updatedBy},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <select id="containUserName" parameterType="com.adoph.permission.pojo.SysUser"
+            resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM sys_user
+        WHERE 1 = 1
+        <if test="id != null and id != ''">
+            AND id <![CDATA[<>]]> #{id}
+        </if>
+        AND user_name = #{userName}
+    </select>
+
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        DELETE
+        FROM sys_user
+        WHERE id = #{0}
+    </delete>
+
+    <select id="selectUserRoles" parameterType="java.lang.Long"
+            resultType="com.adoph.permission.pojo.SysRole">
+        SELECT
+            b.id,
+            b.role_name
+        FROM sys_user_role a
+            JOIN sys_role b ON a.role_id = b.id
+        WHERE a.user_id = #{0}
+    </select>
+
+    <delete id="delUserRoles" parameterType="java.lang.Long">
+        DELETE FROM sys_user_role
+        WHERE user_id = #{userId}
+    </delete>
+
+    <insert id="insertUserRoles" parameterType="java.util.Map">
+        <foreach item="roleId" index="index" collection="roleIds" separator=";">
+            insert into sys_user_role (user_id, role_id, create_time, created_by) values
+            (#{userId}, #{roleId}, now(), #{createdBy})
+        </foreach>
+    </insert>
+</mapper>

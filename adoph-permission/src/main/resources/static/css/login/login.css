@@ -1,0 +1,7 @@
+.verifyCode {
+
+}
+
+.verifyCode #verifyCodeImg {
+    cursor: pointer;
+}
