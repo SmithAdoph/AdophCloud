@@ -22,6 +22,14 @@ import java.util.regex.Pattern;
 public class SimpleTest {
 
     @Test
+    public void testIntegerCompare() {
+        Integer i1 = new Integer(42);
+        Integer i2 = new Integer(42);
+        System.out.println(i1.compareTo(i2));
+
+    }
+
+    @Test
     public void testString() {
         StringBuffer sql = new StringBuffer();
         {
