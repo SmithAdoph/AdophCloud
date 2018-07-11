@@ -8,12 +8,12 @@ package com.adoph.test.design.pattern.chain.v1;
  * @since 2018/7/10
  */
 public class MsgProcessor {
-    private FilterChain filterChain;
+    private Filter filterChain;
     public String process(String msg) {
         return filterChain.doFilter(msg);
     }
 
-    public void setFilterChain(FilterChain filterChain) {
+    public void setFilterChain(Filter filterChain) {
         this.filterChain = filterChain;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @version v1.0
  * @since 2018/7/10
  */
-public class FilterChain {
+public class FilterChain implements Filter {
     private List<Filter> filters;
 
     public FilterChain() {
