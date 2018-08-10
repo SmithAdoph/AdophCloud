@@ -1,6 +1,7 @@
 package com.adoph.test.generic;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,14 @@ public class Test {
         Test t = new Test();
 //        Tool tool = t.get(Tool.class, "1");
 //        Bar bar = t.get(Bar.class, "1");
-        R<Bar> uri = t.exchangeForList("uri", Bar.class);
+//        R<Bar> uri = t.exchangeForList("uri", Bar.class);
+        List<Bar> list = new ArrayList<>();
+        list.add(new Bar());
+        t.setParams(list);
+    }
+
+    public void setParams(List<? extends Bar> list) {
+        System.out.println(list.toString());
     }
 
     public <T> T get(Class<T> clazz, Serializable id) {

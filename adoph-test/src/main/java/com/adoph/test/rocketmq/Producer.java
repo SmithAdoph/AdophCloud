@@ -48,6 +48,7 @@ public class Producer {
      */
     private static void clusterTest() throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("tdd_cluster_producer");
+        DefaultMQProducer producer1 = new DefaultMQProducer();
         producer.setNamesrvAddr("10.28.14.184:9876;10.28.14.74:9876");//名称服务器地址和端口
         producer.start();
         Message msg = new Message("cluster_topic", "tagA", "TEST CONTENT".getBytes());

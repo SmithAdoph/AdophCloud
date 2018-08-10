@@ -1,11 +1,15 @@
 package com.adoph.test;
 
+import com.adoph.framework.web.response.BaseResponse;
 import com.adoph.test.vo.UserVo;
 import com.adoph.framework.util.SysUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.junit.Test;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * 序列化测试
@@ -15,6 +19,29 @@ import java.net.URL;
  * @since 2018/6/12
  */
 public class SerializeTest {
+
+    @Test
+    public void testJSON() {
+        UserVo vo = new UserVo();
+        vo.setId(1L);
+////        String s = JSON.toJSONString(vo, SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullNumberAsZero);
+////        System.out.println(s);
+//        String t = "{\"name\":112}";
+//        System.out.println(t);
+//        BaseResponse response = new BaseResponse<>();
+//        response.setMsg("aa");
+//        response.setData(vo);
+//        response.setData(JSON.toJSONString(vo));
+//        System.out.println(JSON.toJSONString(response));
+
+        String str1 = "{\"data\":\"{\"id\":1}\",\"msg\":\"aa\",\"status\":\"success\",\"success\":true}";
+        Map map = JSON.parseObject(str1, Map.class);
+        Object data = map.get("data");
+        System.out.println(data);
+        System.out.println(JSON.toJSONString(data));
+        UserVo userVo = JSON.parseObject(JSON.toJSONString(data), UserVo.class);
+        System.out.println(JSON.toJSONString(userVo));
+    }
 
     @Test
     public void testWrite() {
