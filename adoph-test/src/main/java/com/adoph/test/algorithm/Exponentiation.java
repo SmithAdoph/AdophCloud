@@ -10,7 +10,7 @@ package com.adoph.test.algorithm;
 public class Exponentiation {
 
     public static void main(String[] args) {
-        int x = 2;//底数
+        int x = 3;//底数
         int n = 63;//幂
         int times = 10000000;//执行次数
         long start1 = System.currentTimeMillis();
@@ -27,9 +27,9 @@ public class Exponentiation {
 
         long start3 = System.currentTimeMillis();
         for (int i = 0; i < times; i++) {
-            int i1 = 2 << 63;
+            calculate1(2, n);
         }
-        System.out.println("方法二执行时间：" + (System.currentTimeMillis() - start3));
+        System.out.println("方法三执行时间：" + (System.currentTimeMillis() - start3));
     }
 
     private static long calculate(long x, long n) {
@@ -38,6 +38,9 @@ public class Exponentiation {
         }
         if (n == 1) {
             return x;
+        }
+        if(x == 2) {
+            return 2 << n;
         }
         if (isEven(n)) {
             return calculate(x * x, n / 2);

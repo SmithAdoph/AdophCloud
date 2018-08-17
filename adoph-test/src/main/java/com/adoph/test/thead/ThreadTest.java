@@ -17,13 +17,13 @@ public class ThreadTest {
         Thread t = new Thread(threadTest);
         t.start();
         threadTest.m2();
-        System.out.println("main:" + threadTest.getB());
+        System.out.println("main:" + threadTest.b);
     }
 
 }
 
 class Color implements Runnable {
-    private int b;
+    int b;
 
     @Override
     public void run() {
