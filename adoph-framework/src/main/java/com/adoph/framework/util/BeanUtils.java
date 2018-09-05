@@ -268,7 +268,7 @@ public final class BeanUtils {
             return null;
         }
         Field[] fields = bean.getClass().getDeclaredFields();
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<>();
         try {
             for (Field field : fields) {
                 field.setAccessible(true);
