@@ -99,6 +99,25 @@ public class BitUtils {
         }
     }
 
+    /**
+     * 字节数组转整数
+     *
+     * @param b     字节数组
+     * @param start 转换开始下标
+     * @param len   转换长度
+     * @return 整数
+     */
+    public static int bytes2Int(byte[] b, int start, int len) {
+        int sum = 0;
+        int end = start + len;
+        for (int i = start; i < end; i++) {
+            int n = ((int) b[i]) & 0xff;
+            n <<= (--len) * 8;
+            sum = n + sum;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         String content = "abc";
         byte[] bytes = string2Bytes(content);
@@ -109,5 +128,8 @@ public class BitUtils {
         System.out.println("字节数组转16进制字符串：" + bytes2HexString(bytes));
         String hexStr = "1DA47C";
         System.out.println("16进制字符串转字节数组：" + Arrays.toString(hexString2Bytes(hexStr)));
+        byte[] bs = new byte[]{1, 0, 2, 3};
+        System.out.println(bytes2Int(bs, 0, 2));
+
     }
 }
