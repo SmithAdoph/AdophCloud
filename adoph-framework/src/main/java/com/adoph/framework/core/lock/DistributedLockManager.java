@@ -139,6 +139,7 @@ public class DistributedLockManager {
      * 释放锁
      * 备注：通过执行Redis内置的Lua解释器，可以使用EVAL命令对Lua脚本进行求值
      * example: <code>EVAL 'if redis.call("get",KEYS[1]) == ARGV[1] then return redis.call("del",KEYS[1]) else return 0 end' 1 key value</code>
+     * <span>为什么使用lua脚本：保证原子性</span>
      *
      * @param key      key
      * @param clientId 客户端id
