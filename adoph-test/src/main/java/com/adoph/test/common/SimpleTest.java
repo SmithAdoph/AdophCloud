@@ -22,6 +22,20 @@ import java.util.regex.Pattern;
 public class SimpleTest {
 
     @Test
+    public void testTypeConvert() {
+        byte a = 127;
+        byte b = 127;
+//        b = a + b;
+        System.out.println(a + b);
+        a += b;
+        System.out.println(a + b);
+
+//        final int i1 = 1;
+//        final int i2 = 1;
+//        final long i3 = i1 + i2;
+    }
+
+    @Test
     public void testIntegerCompare() {
         Integer i1 = new Integer(42);
         Integer i2 = new Integer(42);

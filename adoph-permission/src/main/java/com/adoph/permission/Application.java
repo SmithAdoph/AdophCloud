@@ -19,8 +19,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ServletComponentScan
 @MapperScan(basePackages = "com.adoph.permission.dao.sys")
 @ComponentScan(basePackages = {"com.adoph"})
-//@ComponentScan(basePackages = {"com.adoph.framework.test.spring","com.adoph.framework.core.lock"})
-//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class Application implements EmbeddedServletContainerCustomizer {
 
     public static void main(String[] args) {

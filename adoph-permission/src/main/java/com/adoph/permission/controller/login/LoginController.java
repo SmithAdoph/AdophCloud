@@ -8,15 +8,13 @@ import com.adoph.permission.pojo.SysUser;
 import com.adoph.permission.service.login.LoginService;
 import com.adoph.permission.vo.LoginVO;
 import com.adoph.permission.vo.OnlineUser;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +35,7 @@ import static com.adoph.permission.constant.LoginConstant.LOGIN_ONLINE_TAG;
  * @version v1.0
  * @date 2017/8/11
  */
-@Controller
+@RestController
 @RequestMapping("login")
 public class LoginController {
 
@@ -78,7 +76,7 @@ public class LoginController {
         if (failCount != null) {
             if (failCount >= FAIL_COUNT_MAX) {
                 String verifyCode = request.getParameter("verifyCode");
-                if (verifyCode == null || !LoginManager.verifyCode(loginId, verifyCode)) {
+                if (!LoginManager.verifyCode(loginId, verifyCode)) {
                     response.error("验证码输入错误！");
                     response.setData(new LoginVO(1));
                     return response;
@@ -146,6 +144,7 @@ public class LoginController {
      * @param request  HttpServletRequest
      * @param response HttpServletResponse
      */
+    @ApiOperation(value="获取验证码", notes="")
     @RequestMapping(value = "verifyCode.do", method = RequestMethod.GET)
     public void verifyCode(@RequestParam("loginId") String loginId, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ByteArrayInputStream is = null;

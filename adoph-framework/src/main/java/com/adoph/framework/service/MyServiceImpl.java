@@ -23,6 +23,8 @@ public class MyServiceImpl implements MyService {
     @Transactional
     @Override
     public void test() {
+        String sql = "select * from not_exist_table";
+        baseDao.getMapBySql(sql);
 //        1
 //        User user = baseDao.find(User.class, 1L);
 //        SysUtils.print(user);

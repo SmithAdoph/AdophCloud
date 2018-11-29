@@ -17,6 +17,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
+
+    /**
+     * 访问路径白名单列表
+     */
+    private static final String[] EXCLUDE_PATH_PATTERNS = {
+            "/index.do",
+            "/login/**",
+            "/error",
+            "/office/**",
+            "/swagger-ui.html"
+    };
+
     /**
      * 静态资源路径配置
      *
@@ -49,7 +61,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new IndexInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/index.do", "/login/**", "/error");
+                .excludePathPatterns(EXCLUDE_PATH_PATTERNS);
         super.addInterceptors(registry);
     }
 }

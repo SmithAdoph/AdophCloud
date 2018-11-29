@@ -1,8 +1,9 @@
 package com.adoph.framework;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -11,20 +12,17 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * web启动配置
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/8/11
  */
-@SpringBootApplication
 @ServletComponentScan
-@MapperScan(basePackages = "com.adoph.permission.dao.sys")
-@ComponentScan(basePackages = {"com.adoph"})
-//@ComponentScan(basePackages = {"com.adoph.framework.test.spring","com.adoph.framework.core.lock"})
-//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-public class Application implements EmbeddedServletContainerCustomizer {
+@ComponentScan(basePackages = {"com.adoph.test.spring", "com.adoph.framework.dao.jpa", "com.adoph.framework.service"})
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+public class TestJpaApplication implements EmbeddedServletContainerCustomizer {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(TestJpaApplication.class, args);
     }
 
     @Override
