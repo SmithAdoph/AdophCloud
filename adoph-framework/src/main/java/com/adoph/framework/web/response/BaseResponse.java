@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 统一返回前端包装实体
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/9/13
  */

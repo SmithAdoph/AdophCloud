@@ -3,7 +3,7 @@ package com.adoph.permission.constant;
 /**
  * 用户登录常量
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/10/12
  */

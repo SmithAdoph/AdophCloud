@@ -6,7 +6,7 @@ import com.adoph.framework.core.cache.service.impl.RedisCache;
 /**
  * 缓存工厂
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/9/22
  */

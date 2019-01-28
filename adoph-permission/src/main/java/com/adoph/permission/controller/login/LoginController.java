@@ -31,7 +31,7 @@ import static com.adoph.permission.constant.LoginConstant.LOGIN_ONLINE_TAG;
 /**
  * 用户登录控制器
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/8/11
  */

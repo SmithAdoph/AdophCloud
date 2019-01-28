@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 进位工具类：
  * 2进制、10进制、16进制等转换
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/9/22
  */

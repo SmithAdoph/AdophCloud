@@ -18,7 +18,7 @@ import static com.adoph.permission.constant.LoginConstant.*;
 /**
  * 在线用户管理
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/9/15
  */

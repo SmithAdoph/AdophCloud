@@ -3,7 +3,7 @@ package com.adoph.permission.vo;
 /**
  * 用户登录VO
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/9/19
  */

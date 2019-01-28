@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * web启动配置
  *
- * @author Adohp
+ * @author Adoph
  * @version v1.0
  * @date 2017/8/11
  */
