@@ -32,6 +32,7 @@ public class StringMathCalculateV2 {
             switch (item) {
                 case "+":
                 case "-":
+                    //非括号执行出栈计算
                     while (!ops.isEmpty() && (!(ops.peek().equals("(") || ops.peek().equals(")")))) {
                         process(ops, vars);
                     }
@@ -39,31 +40,42 @@ public class StringMathCalculateV2 {
                     break;
                 case "*":
                 case "/":
+                    //非乘除执行出栈计算
                     while (!ops.isEmpty() && (ops.peek().equals("*") || ops.peek().equals("/"))) {
                         process(ops, vars);
                     }
                     ops.push(item);
                     break;
                 case "(":
+                    //左括号不做操作，直接操作符入栈
                     ops.push(item);
                     break;
                 case ")":
+                    //非左括号，进行出栈计算至左括号，最后清除左括号
                     while (!ops.peek().equals("(")) {
                         process(ops, vars);
                     }
                     ops.pop();
                     break;
                 default:
+                    //参数入栈
                     vars.push(Double.valueOf(item));
                     break;
             }
         }
+        //出栈计算所有栈内数据
         while (!ops.isEmpty()) {
             process(ops, vars);
         }
         return vars.pop();
     }
 
+    /**
+     * 出栈执行操作符
+     *
+     * @param ops  操作符栈
+     * @param vars 参数栈
+     */
     private static void process(Stack<String> ops, Stack<Double> vars) {
         String op = ops.pop();
         Double v1 = vars.pop();
@@ -84,7 +96,13 @@ public class StringMathCalculateV2 {
         }
     }
 
-    public static String[] convert(String content) {
+    /**
+     * 转换为数组，注意大于10位的数字转换
+     *
+     * @param content 待转换字符串
+     * @return 数组
+     */
+    private static String[] convert(String content) {
         return content.replaceAll("\\+", "\\$\\+\\$")
                 .replaceAll("-", "\\$-\\$")
                 .replaceAll("\\*", "\\$\\*\\$")
