@@ -20,6 +20,10 @@ import static com.adoph.permission.constant.LoginConstant.LOGIN_ONLINE_TAG;
 public class IndexInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String requestURI = request.getRequestURI();
+        if (!requestURI.endsWith(".do")) {
+            return true;
+        }
         OnlineUser online = null;
         Object _user = request.getSession().getAttribute(LOGIN_ONLINE_TAG);
         if (_user != null) {
@@ -33,9 +37,9 @@ public class IndexInterceptor implements HandlerInterceptor {
                 response.setStatus(520);
             } else {
                 // 非ajax，直接跳转登录页面
-                response.sendRedirect("index.do");
+                response.sendRedirect("index.html");
+                return false;
             }
-            return false;
         }
         return true;
     }

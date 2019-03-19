@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -21,14 +19,9 @@ import org.springframework.context.annotation.ComponentScan;
 @EntityScan( basePackages = {"com.adoph.test.pojo"} )
 @ComponentScan(basePackages = {"com.adoph.test.hibernate", "com.adoph.test.spring"})
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-public class TestHibernateApplication implements EmbeddedServletContainerCustomizer {
+public class TestHibernateApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TestHibernateApplication.class, args);
-    }
-
-    @Override
-    public void customize(ConfigurableEmbeddedServletContainer configurableEmbeddedServletContainer) {
-        configurableEmbeddedServletContainer.setPort(8999);
     }
 }

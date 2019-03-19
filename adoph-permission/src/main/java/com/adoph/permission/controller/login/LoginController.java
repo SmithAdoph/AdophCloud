@@ -8,11 +8,9 @@ import com.adoph.permission.pojo.SysUser;
 import com.adoph.permission.service.login.LoginService;
 import com.adoph.permission.vo.LoginVO;
 import com.adoph.permission.vo.OnlineUser;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
@@ -144,7 +142,6 @@ public class LoginController {
      * @param request  HttpServletRequest
      * @param response HttpServletResponse
      */
-    @ApiOperation(value="获取验证码", notes="")
     @RequestMapping(value = "verifyCode.do", method = RequestMethod.GET)
     public void verifyCode(@RequestParam("loginId") String loginId, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ByteArrayInputStream is = null;

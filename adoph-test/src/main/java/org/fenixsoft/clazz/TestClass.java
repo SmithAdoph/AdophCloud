@@ -1,11 +1,7 @@
 package org.fenixsoft.clazz;
 
-import org.apache.commons.lang.CharSet;
-
-import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class TestClass {
     private int m;

@@ -21,6 +21,6 @@ public class IndexController {
      */
     @RequestMapping(value = "index.do")
     public ModelAndView index() {
-        return new ModelAndView("index");
+        return new ModelAndView("index.html");
     }
 }

@@ -29,13 +29,13 @@ public class Producer {
 
     public static void main(String[] args) {
         try {
-//            normalSend();
+            normalSend();
 //            orderSend();
 //            syncMsg();
 //            asyncMsg();
 //            scheduleMsg();
 //            batchMsg();
-            clusterTest();
+//            clusterTest();
         } catch (Exception e) {
             e.printStackTrace();
         }

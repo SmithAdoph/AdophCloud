@@ -23,6 +23,7 @@
             <version>${project.version}</version>
         </dependency>
         <!--依赖模块end-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

@@ -3,10 +3,7 @@ package com.adoph.permission.config;
 import com.adoph.permission.interceptor.IndexInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * Web相关配置适配器
@@ -16,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @date 2017/11/22
  */
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 访问路径白名单列表
@@ -26,8 +23,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             "/login/**",
             "/error",
             "/office/**",
+            "/index.html",
             "/swagger-ui.html"
     };
+
 
     /**
      * 静态资源路径配置
@@ -37,7 +36,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/app/**").addResourceLocations("classpath:/templates/app/");
-        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
     /**
@@ -49,7 +48,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/index.do");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        super.addViewControllers(registry);
     }
 
     /**
@@ -62,6 +60,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new IndexInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns(EXCLUDE_PATH_PATTERNS);
-        super.addInterceptors(registry);
     }
 }

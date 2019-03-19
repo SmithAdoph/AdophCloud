@@ -264,6 +264,15 @@ public class RedisTest {
 //        ops.set("bit", "a");//ASCII 97-0110 0010
 //        ops.setBit("bit", 2, false);
 //        System.out.println(ops.get("bit"));
+
+    }
+
+    @Test
+    public void zsetTest() {
+        ZSetOperations<String, String> ops = stringRedisTemplate.opsForZSet();
+        ops.add("roleId", "cat", 2);
+        ops.add("roleId", "dog", 1);
+        ops.add("roleId", "pig", 3);
     }
 
     @Test
