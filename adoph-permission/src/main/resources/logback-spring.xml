@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <property name="log.path" value="D:/log/AdophCloud"/>
+    <property name="LOCAL_LOG_PATTERN" value="%highlight([%-5level]) %d{yyyy-MM-dd HH:mm:ss.SSS} %yellow([%t]) %magenta(%logger{30}) : %m%n"/>
+    <property name="LOG_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %logger{30} : %m%n"/>
+
+    <!--console log-->
+    <appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--error log-->
+    <appender name="ERROR_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${log.path}/adoph_framework_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/adoph_framework_error_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--full log-->
+    <appender name="FULL_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/adoph_framework_all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/adoph_framework_all_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--异步到文件-->
+    <appender name="ASYNC_APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>500</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="FULL_APPENDER"/>
+    </appender>
+
+    <!--生产环境:打印控制台和输出到文件-->
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+            <appender-ref ref="ASYNC_APPENDER"/>
+            <appender-ref ref="ERROR_APPENDER"/>
+        </root>
+    </springProfile>
+
+    <!--开发环境:打印控制台和输出到文件-->
+    <springProfile name="dev">
+        <!-- 打印sql -->
+        <logger name="com.adoph.permission.dao" level="DEBUG" />
+        <root level="info">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+            <appender-ref ref="FULL_APPENDER"/>
+            <appender-ref ref="ERROR_APPENDER"/>
+        </root>
+    </springProfile>
+
+    <!--测试环境:打印控制台和输出到文件-->
+    <springProfile name="test">
+        <!-- 打印sql -->
+        <logger name="com.adoph.permission.dao" level="DEBUG" />
+        <root level="info">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+            <appender-ref ref="ASYNC_APPENDER"/>
+            <appender-ref ref="ERROR_APPENDER"/>
+        </root>
+    </springProfile>
+
+    <!--本地环境:打印控制台-->
+    <springProfile name="local">
+        <!-- 打印sql -->
+        <logger name="com.adoph.permission.dao" level="DEBUG" />
+        <root level="info">
+            <appender name="LOCAL_CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>${LOCAL_LOG_PATTERN}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </root>
+    </springProfile>
+</configuration>

@@ -18,6 +18,7 @@ import static com.adoph.permission.constant.LoginConstant.LOGIN_ONLINE_TAG;
  * @date 2017/11/23
  */
 public class IndexInterceptor implements HandlerInterceptor {
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
@@ -37,7 +38,7 @@ public class IndexInterceptor implements HandlerInterceptor {
                 response.setStatus(520);
             } else {
                 // 非ajax，直接跳转登录页面
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.do");
                 return false;
             }
         }

@@ -78,10 +78,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--other-->
@@ -135,4 +131,43 @@
             </plugin>
         </plugins>
     </build>
+
+    <!--<profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <activatedProperties>test</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <activatedProperties>pro</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>-->
 </project>

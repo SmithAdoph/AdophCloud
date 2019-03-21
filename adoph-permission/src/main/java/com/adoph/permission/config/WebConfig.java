@@ -22,8 +22,6 @@ public class WebConfig implements WebMvcConfigurer {
             "/index.do",
             "/login/**",
             "/error",
-            "/office/**",
-            "/index.html",
             "/swagger-ui.html"
     };
 
