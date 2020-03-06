@@ -1,4 +1,4 @@
-package com.adoph.framework.log;
+package com.adoph.test.log;
 
 import java.lang.annotation.*;
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * 堆内存溢出测试
+ * vm args:-Xms20M -Xmx20M --XX:+HeapDumpOnOutOfMemoryError
  *
  * @author Adoph
  * @version v1.0

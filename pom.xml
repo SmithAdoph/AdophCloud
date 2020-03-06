@@ -24,6 +24,7 @@
         <module>adoph-test</module>
         <module>adoph-permission</module>
         <module>adoph-permission-sdk</module>
+        <module>adoph-log</module>
     </modules>
 
     <!--公共属性配置-->

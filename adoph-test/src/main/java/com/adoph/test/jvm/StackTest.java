@@ -2,6 +2,7 @@ package com.adoph.test.jvm;
 
 /**
  * 栈溢出测试
+ * vm args:-Xss128k
  *
  * @author Adoph
  * @version v1.0

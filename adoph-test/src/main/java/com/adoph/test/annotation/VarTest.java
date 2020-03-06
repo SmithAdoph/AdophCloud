@@ -8,4 +8,7 @@ package com.adoph.test.annotation;
  * @date 2020/3/4
  */
 public class VarTest {
+
+    private String Abc = "abc";
+
 }

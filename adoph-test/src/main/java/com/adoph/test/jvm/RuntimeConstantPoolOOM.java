@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 方法区和运行时常量池溢出测试
+ * 方法区和运行时常量池溢出测试:
+ * 备注：1、运行时常量池过多；2、动态加载类过多（如：cglib加载的类）
  * JDK1.6返回OutOfMemoryError
+ *
+ * vm args:-XX:PermSize=10M -XX:MaxPermSize=10M
  *
  * @author Adoph
  * @version v1.0
