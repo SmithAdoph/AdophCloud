@@ -3,7 +3,7 @@ package com.adoph.test.thead;
 /**
  * 利用volatile整型和volatile的标志交替打印奇偶数
  *
- * @author tangqiandong
+ * @author adoph
  * @version v1.0
  * @date 2020/3/9
  */

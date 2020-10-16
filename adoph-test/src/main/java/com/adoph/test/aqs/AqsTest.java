@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 测试Object的wait和notify
  *
- * @author tangqiandong
+ * @author adoph
  * @version v1.0
  * @date 2020/3/8
  */

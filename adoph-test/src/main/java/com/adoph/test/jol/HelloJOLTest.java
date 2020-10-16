@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * 2、轻量级锁  0，00
  * 3、重量级锁  0，10
  *
- * @author tangqiandong
+ * @author adoph
  * @version v1.0
  * @date 2020/7/26
  */

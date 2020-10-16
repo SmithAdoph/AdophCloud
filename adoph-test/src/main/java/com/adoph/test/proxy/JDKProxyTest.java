@@ -53,11 +53,13 @@ class Driver implements Drive {
     private String text;
 
     public void drive() {
+        System.out.println("--------start----------");
         System.out.println("老司机发车...");
         call();
     }
 
     public void call() {
         System.out.println("老司机开车打电话...");
+        System.out.println("--------end----------");
     }
 }

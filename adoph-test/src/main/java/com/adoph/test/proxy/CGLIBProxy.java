@@ -24,14 +24,14 @@ public class CGLIBProxy {
         System.out.println();
         DriverCglibProxy driverCglibProxy = new DriverCglibProxy();
         Driver o = (Driver) driverCglibProxy.getProxyInstance(new Driver());
-//        o.drive();
-        Class<Driver> clazz = (Class<Driver>) o.getClass();
-        MyTest annotation = clazz.getAnnotation(MyTest.class);
-        MyTest declaredAnnotation = clazz.getDeclaredAnnotation(MyTest.class);
-        Annotation[] annotations = clazz.getAnnotations();
-        for(Annotation att : annotations) {
-            System.out.println(att.annotationType());
-        }
+        o.drive();
+//        Class<Driver> clazz = (Class<Driver>) o.getClass();
+//        MyTest annotation = clazz.getAnnotation(MyTest.class);
+//        MyTest declaredAnnotation = clazz.getDeclaredAnnotation(MyTest.class);
+//        Annotation[] annotations = clazz.getAnnotations();
+//        for(Annotation att : annotations) {
+//            System.out.println(att.annotationType());
+//        }
 //        System.out.println(annotation.name());
 //        System.out.println(declaredAnnotation.name());
     }
@@ -49,9 +49,9 @@ class DriverCglibProxy implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("代理类调用开始！！！");
+        System.out.println("代理类调用开始！！！我是代理类打印的");
         Object result = methodProxy.invokeSuper(o, objects);
-        System.out.println("代理类调用结束！！！");
+        System.out.println("代理类调用结束！！！我是代理类打印的");
         return result;
     }
 }
@@ -64,6 +64,7 @@ class Car {
 
     public void call() {
         System.out.println("滴滴滴滴...........");
+        System.out.println("--------------");
         print();
     }
     public void print() {
