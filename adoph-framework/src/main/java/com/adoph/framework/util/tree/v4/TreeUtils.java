@@ -58,7 +58,7 @@ public class TreeUtils {
                 .id(Menu::getId) // id标识
                 .pid(Menu::getPid) // pid标识
                 .children(Menu::getChildren) // 子节点集
-                .sort(Menu::getSort) // 排序字段
+                .sort(Menu::getSort) // 排序字段（仅支持Byte、Short、Integer、Long等数值类型）
                 .build();
         log.info("设置根节点父id时的使用场景：{}", JSON.toJSONString(menuList));
     }
