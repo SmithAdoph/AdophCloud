@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * lambda 化繁为简
@@ -170,6 +171,16 @@ public class Test {
 
         Arrays.sort(rosterAsArray, Comparator.comparing(Person::getBirthday));
 
+    }
+
+    @org.junit.Test
+    public void testSupplier() {
+        Person personInfo = Person.getPersonInfo(Person::new);
+    }
+
+    @org.junit.Test
+    public void testThreadLocal() {
+        ThreadLocal<Person> threadLocal = ThreadLocal.withInitial(Person::new);
     }
 
 }

@@ -1,9 +1,8 @@
 package com.adoph.framework.util;
 
+import com.adoph.framework.util.bean.Menu;
 import com.adoph.framework.util.bean.TreeNode;
-import com.alibaba.fastjson.JSON;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,8 +27,6 @@ public class TreeDataUtils {
         Node n7 = new Node(7L, 6L, "红红");
 
         List<Node> list = Arrays.asList(n1, n2, n3, n4, n5, n6, n7);
-        System.out.println(JSON.toJSONString(getTree(list)));
-
         System.out.println("-------------完美分割线------------------");
 
         List<Menu> list2 = Arrays.asList(
@@ -42,7 +39,7 @@ public class TreeDataUtils {
         );
 
 
-        System.out.println(JSON.toJSONString(getTree(list2)));
+//        System.out.println(JSON.toJSONString(getTree(list2)));
 
 
     }
@@ -76,9 +73,8 @@ public class TreeDataUtils {
 
 }
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-class Node extends TreeNode {
+class Node {
 
     Node(Long id, Long pid, String name) {
         this.id = id;
@@ -88,21 +84,8 @@ class Node extends TreeNode {
 
     private Long id;
     private Long pid;
+    private List<Node> children;
     private String name;
-
-}
-
-@EqualsAndHashCode(callSuper = true)
-@Data
-class Menu extends TreeNode {
-
-    Menu(String id, String pid, String url) {
-        super.setId(id);
-        super.setPid(pid);
-        this.url = url;
-    }
-
-    private String url;
 
 }
 

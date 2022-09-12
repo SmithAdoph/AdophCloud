@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 @Slf4j
 @Data
@@ -25,7 +26,7 @@ public class Person {
 
     public void printPerson() {
         // ...
-        log.info("printPerson ...");
+        log.info("printPerson ..." + this.emailAddress);
     }
 
     public void printPerson(String input) {
@@ -97,5 +98,9 @@ public class Person {
                 block.accept(data);
             }
         }
+    }
+
+    public static Person getPersonInfo(Supplier<Person> supplier) {
+        return supplier.get();
     }
 }
